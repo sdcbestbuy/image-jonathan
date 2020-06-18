@@ -1,0 +1,21 @@
+
+.flex-container {
+  max-width: 1300px;
+  margin: 40px auto 0 auto;
+  padding: 20px 50px;
+  display: flex;
+}
+
+.item {
+background-color: dodgerblue;
+}
+
+.side {
+background-color: firebrick;
+}
+
+
+
+
+
+/*# sourceMappingURL=client-2ef88f9bc9ae1f5f0133f9ffccc65f93.css.map*/
