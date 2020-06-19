@@ -31,9 +31,7 @@ getProductInfo() {
     return (
       <div>
         <div className= "flex-container">
-          <div className="item">
           <ProductView productInfo={this.state.productInfo}/>
-          </div>
           <div className="side"></div>
         </div>
         </div>

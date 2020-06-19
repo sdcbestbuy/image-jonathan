@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
 
   app.get('/display', (req, res) => {
 
+    db.getProduct
   })
 
 app.listen(port, () => console.log(`Image Component listening at http://localhost:${port}`))
