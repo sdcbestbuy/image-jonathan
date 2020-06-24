@@ -1,14 +1,15 @@
-const queries = require('./database/queries');
-const mysqlConfig = require('./config.js');
+const mysql = require('mysql');
+const mysqlConfig = require('./sqlconfig.js');
 
-const getProductInfo= function(id, callback){
-  connection.query('SELECT * FROM products WHERE id = ?', [id], (err, productInfo)=> {
+const connection = mysql.createConnection(mysqlConfig);
+const getProductInfo= (callback)=>{
+  connection.query('SELECT * FROM product', (err, productInfo)=> {
     if (err) {
       console.log('could not find', err);
       callback(err, null);
-    }
+    }else{
     callback(null,productInfo);
-  })
-}
-
+  }
+})
+};
 module.exports.getProductInfo = getProductInfo;

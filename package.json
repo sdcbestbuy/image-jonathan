@@ -5,9 +5,10 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
     "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon server.js"
+    "server-dev": "nodemon server/index.js",
+    "start": "webpack-dev-server --config webpack.config.js --open --hot -w",
+    "build": "webpack -w --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -20,9 +21,11 @@
   },
   "homepage": "https://github.com/cmurray1105/Product-Image#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "babel": "^6.23.0",
     "express": "^4.17.1",
     "jquery": "^3.5.1",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.4",
     "npm": "^6.14.5",
     "path": "^0.12.7",

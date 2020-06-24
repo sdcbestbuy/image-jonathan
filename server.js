@@ -3,19 +3,26 @@ const app = express()
 const port = 4200
 const path = require('path');
 const bodyParser=require('body-parser');
-const db =require('./database')
+const db =require('./database/queries.js')
 
 app.use(express.static(path.join(__dirname, './client/dist')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-  })
-
   app.get('/display', (req, res) => {
+    // let id = req.query;
 
-    db.getProduct
+    // console.log("b", req.query)
+
+    db.getProductInfo((err, result)=>{
+      if(err){
+        console.log(err)
+        res.sendStatus(404)
+      }else{
+      res.send(result)
+    }
   })
+  });
+
 
 app.listen(port, () => console.log(`Image Component listening at http://localhost:${port}`))
