@@ -10,7 +10,6 @@ module.exports = {
       {
         test: /\.js|\.jsx$/,
         exclude: /node_modules/,
-        include: __dirname + '/client/src/index.js'
         use: {
           loader: 'babel-loader',
           options: {
