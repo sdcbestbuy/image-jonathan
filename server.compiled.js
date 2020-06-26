@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 
 var db = require('./database/queries.js');
 
-app.use(express["static"](path.join(__dirname, './client/dist')));
+app.use(express["static"](path.join(__dirname, 'client/dist')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
