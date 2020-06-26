@@ -27,5 +27,5 @@ app.get('/display', function (req, res) {
   });
 });
 app.listen(port, function () {
-  return console.log("Image Component listening at http://localhost:".concat(port));
+  return console.log("Image Component listening at ".concat(port));
 });

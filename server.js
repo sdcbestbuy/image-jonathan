@@ -22,4 +22,4 @@ app.use(bodyParser.urlencoded({ extended: true }));
   });
 
 
-app.listen(port, () => console.log(`Image Component listening at http://localhost:${port}`))
+app.listen(port, () => console.log(`Image Component listening at ${port}`))
