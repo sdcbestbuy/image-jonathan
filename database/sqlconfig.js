@@ -1,6 +1,7 @@
 module.exports = {
-  host:'localhost',
-  user: 'root',
-  password: 'Bruins2011!',
-  database: 'bestbuy'
+  host     : process.env.RDS_HOSTNAME||'localhost',
+  user     : process.env.RDS_USERNAME||'root',
+  password : process.env.RDS_PASSWORD||'Bruins2011!',
+  port     : process.env.RDS_PORT||8081
+  database: process.env.RDS_DB_NAME||'bestbuy'
 };
