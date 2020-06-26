@@ -15,17 +15,17 @@ app.use(express["static"](path.join(__dirname, "Client/dist")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
-})); // app.get('/display', (req, res) => {
-//   db.getProductInfo((err, result)=>{
-//     if(err){
-//       console.log(err)
-//       res.sendStatus(404)
-//     }else{
-//     res.send(result)
-//   }
-// })
-// });
-
+}));
+app.get('/display', function (req, res) {
+  db.getProductInfo(function (err, result) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(404);
+    } else {
+      res.send(result);
+    }
+  });
+});
 app.listen(port, function () {
   return console.log("Image Component listening at ".concat(port));
 });
