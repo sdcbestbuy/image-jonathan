@@ -10,9 +10,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
   app.get('/display', (req, res) => {
-    // let id = req.query;
-
-    // console.log("b", req.query)
 
     db.getProductInfo((err, result)=>{
       if(err){

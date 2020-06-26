@@ -79,11 +79,18 @@
   max-width: 1000px;
   transform: scale(1) translate(0px, 0px);
 } */
+.image-thumbnail {
+  margin-right:15px;
+}
+.image-thumbnail :hover {
+
+}
 #payment-plan {
   font-size: 30px;
   line-height: 35px;
 }
 #price {
+  font: Arial;
   font-size: 30px;
   line-height: 35px;
 }
@@ -106,6 +113,7 @@
   height:14px;
 }
 #title {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
 }
 #total-reviews {
@@ -118,18 +126,20 @@
   transform: scale(1) translate(0px, 0px);
 }
 .image-button {
-  width: 60px;
-  height: 60px;
+  width: 100%;
+  height: 100%;
 }
-.thumbnail-image{
-  height: 56px;
-  width: 56px;
+
+.thumbnail-image {
+  padding: 0;
+  max-height: 56px;
+  max-width: 56px;
+  object-fit: cover;
 }
-.thumbnail {
-  height: 54px;
-  width: 54px;
-}
+
 .thumbnail-container {
+  box-sizing: border-box;
+  overflow: hidden;
   width: 60px;
   height: 60px;
 }
@@ -141,14 +151,13 @@
 }
 .thumbnail-list ul{
   margin-top: 0;
-  margin: 15px;
   margin-block-start: 1em;
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   padding-inline-start: 40px;
 }
-.thumbnail-list ::after ::before {
+.thumbnail-list {
   box-sizing: border-box;
 }
 
