@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "react-dev": "webpack -d --watch",
-    "start": "nodemon server/index.js",
+    "start": "node server.compiled.js",
     "server-dev": "webpack-dev-server --config webpack.config.js --open --hot -w",
-    "build": "webpack -w --config webpack.config.js"
+    "build": "babel server.js -o server.compiled.js"
   },
   "repository": {
     "type": "git",
@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/cmurray1105/Product-Image#readme",
   "dependencies": {
+    "@babel/cli": "^7.10.3",
     "axios": "^0.19.2",
-    "babel": "^6.23.0",
     "express": "^4.17.1",
     "jquery": "^3.5.1",
     "mysql": "^2.18.1",

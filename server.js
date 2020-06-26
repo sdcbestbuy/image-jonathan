@@ -1,9 +1,9 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 const port = process.env.PORT||4200
 const path = require('path');
 const bodyParser=require('body-parser');
-const db =require('./database/queries.js')
+const db =require('./database/queries.js');
 
 app.use(express.static(path.join(__dirname, './client/dist')));
 app.use(bodyParser.json());
