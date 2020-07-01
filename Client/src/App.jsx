@@ -27,7 +27,7 @@ class App extends React.Component {
     window.addEventListener('click', (event) => {
       console.log(event.view.id)
       if (event.view.id !== undefined) {
-        if (event.view.id !== this.state.currentProduct) {
+        if (event.view.id !== this.state.currentProduct && this.state.dataLoaded) {
           this.setState({ currentProduct: event.view.id })
           this.getAllData(this.state.productInfo)
         }
@@ -48,7 +48,7 @@ class App extends React.Component {
       })
       .catch((error) => {
         console.log(error);
-      });
+      })
   };
 
 
