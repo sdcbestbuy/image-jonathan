@@ -20,14 +20,15 @@ class App extends React.Component {
     //bind event handler
     this.getAllData = this.getAllData.bind(this);
     this.getZip = this.getZip.bind(this);
+    this.setCurrentProduct.bind(this);
   };
   componentDidMount() {
     this.getAllData(this.state.productInfo);
     this.getZip();
     window.addEventListener('click', (event) => {
       console.log("id", event.view.id)
-      if (window.id !== undefined){
-        if (window.id !== this.state.currentProduct) {
+      if (event.view.id !== undefined){
+        if (event.view.id !== this.state.currentProduct) {
           setCurrentProduct(event.view.id)
         }
       }
