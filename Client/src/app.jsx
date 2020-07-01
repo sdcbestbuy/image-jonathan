@@ -25,12 +25,10 @@ class App extends React.Component {
     this.getAllData(this.state.productInfo);
     this.getZip();
     window.addEventListener('click', (event) => {
-      console.log(window.id)
+      console.log("id", event.view.id)
       if (window.id !== undefined){
         if (window.id !== this.state.currentProduct) {
-          console.log(Window.id)
-          this.setState({ currentProduct: window.id })
-          console.log("currentProduct", this.state.currentProduct)
+          setCurrentProduct(event.view.id)
         }
       }
     })
@@ -61,6 +59,10 @@ class App extends React.Component {
       .fail(() => {
         console.log('error')
       })
+  }
+
+  setCurrentProduct(id) {
+    this.setState({ currentProduct: id })
   }
 
 

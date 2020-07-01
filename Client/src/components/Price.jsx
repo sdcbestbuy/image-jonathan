@@ -7,13 +7,13 @@ const Price = ({price})=> (
       Price Match Guarantee
     </div>
     <div id="price">
-    ${price}
+    ${price}.99
   </div>
   <div id="or">
     or
   </div>
   <div id="payment-plan">
-    ${Math.floor(price / 18)}/mo.*
+    ${Math.floor(price / 18)}.99/mo.*
   </div>
   </div>
 )
