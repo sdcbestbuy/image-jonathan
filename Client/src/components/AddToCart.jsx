@@ -7,7 +7,7 @@ const AddToCart = ()=> (
     }else{
       window.cart=1
     }
-    console.log(window.checkout)}}>
+    console.log(window.cart)}}>
     <img id="cart" src="https://i.ibb.co/MkrbHwc/cart.jpg" />
      Add to Cart
 
