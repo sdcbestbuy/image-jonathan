@@ -1,8 +1,8 @@
 import React from 'react';
-let Rating = ({rating}) => (
+let Rating = ({rating, count}) => (
 <div id="rating">
 <div id="total-reviews">
-<img id="stars" src="https://i.ibb.co/F3zgWkv/stars.jpg" />4.6 (54 reviews)</div>
+<img id="stars" src="https://i.ibb.co/F3zgWkv/stars.jpg" />{rating} ({count} reviews)</div>
 </div>
 )
 export default Rating;

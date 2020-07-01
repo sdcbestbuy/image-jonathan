@@ -27,7 +27,7 @@ const ProductView = ({productInfo, customerLocation})=> {
   <div className='column'>
   <div className='purchase'>
   <Title title={productInfo.product_name}/>
-  <Rating rating={productInfo.customer_review_AVG}/>
+  <Rating rating={productInfo.customer_review_AVG} count ={productInfo.customerReviewCount}/>
   <Price price={productInfo.regularPrice}/>
   <br />
   <hr />

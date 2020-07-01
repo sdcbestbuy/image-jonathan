@@ -14,9 +14,7 @@ render(){
   return (
     <div>
   <div className='main-img'>
-
     <img id='main' src={this.state.currentImage} />
-
     </div>
     <ul className='thumbnail-list'>
       <li className='image-thumbnail'>

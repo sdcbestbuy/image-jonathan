@@ -23,7 +23,12 @@ class App extends React.Component {
     componentDidMount(){
       this.getAllData(this.state.productInfo);
       this.getZip();
-    };
+    //   window.addEventListener('click', (event)=> {
+    //     if (event.target.getAttribute('data-id') !== NaN){
+    //     this.setState({currentProduct: event.target.getAttribute('data-id')})
+    //     this.getAllData(this.state.productInfo)
+    // })
+  }
 
 
   //event handlers
