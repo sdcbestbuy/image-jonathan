@@ -20,7 +20,7 @@ class App extends React.Component {
     //bind event handler
     this.getAllData = this.getAllData.bind(this);
     this.getZip = this.getZip.bind(this);
-    this.setCurrentProduct.bind(this);
+    this.setCurrentProduct=this.setCurrentProduct.bind(this);
   };
   componentDidMount() {
     this.getAllData(this.state.productInfo);
@@ -29,7 +29,7 @@ class App extends React.Component {
       console.log("id", event.view.id)
       if (event.view.id !== undefined){
         if (event.view.id !== this.state.currentProduct) {
-          setCurrentProduct(event.view.id)
+          this.setCurrentProduct(event.view.id)
         }
       }
     })
