@@ -21,5 +21,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
   })
   });
 
+  app.get('/images', (req, res)=>{
+    db.getImages((err, result)=>{
+      if(err){
+        console.log(err)
+        res.sendStatus(404)
+      }else{
+      res.send(result)
+    }
+  })
+  });
+
 
 app.listen(port, () => console.log(`Image Component listening at ${port}`))

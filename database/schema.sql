@@ -16,6 +16,21 @@ CREATE TABLE product (
   product_url VARCHAR(255)
 );
 
+CREATE TABLE images (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  product_id INT,
+  url VARCHAR(255),
+  FOREIGN KEY (product_id)
+    REFERENCES product(id)
+);
+
+INSERT INTO images (product_id, url) VALUES (5, 'https://i.ibb.co/PmPSsZM/6393799ld.jpg');
+INSERT INTO images (product_id, url) VALUES (5, 'https://i.ibb.co/18xBpDR/2.jpg');
+INSERT INTO images (product_id, url) VALUES (5, 'https://i.ibb.co/y8G8gg1/3.jpg');
+INSERT INTO images (product_id, url) VALUES (5, 'https://i.imgur.com/OOryx0Y.jpg');
+
+
+
 INSERT INTO product(customer_review_AVG, customerReviewCount, product_image, product_name, regularPrice, shortDescription, thumbnailImage, product_url) VALUES (1,2,"https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5956/5956026_sa.jpg","Lenovo - Refurbished Desktop - Intel Core i5 - 8GB Memory - 500GB Hard Drive - Black",254.99,"Nam quis nulla. Integer malesuada. In in enim a arcu imperdiet malesuada. Sed vel lectus. Donec odio urna, tempus molestie, porttitor ut, iaculis quis, sem. Phasellus rhoncus. Aenean id metus id velit ullamcorper pulvinar. Vestibulum fermen","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5956/5956026_s.gif","https://api.bestbuy.com/click/-/5956026/pdp");
 INSERT INTO product(customer_review_AVG, customerReviewCount, product_image, product_name, regularPrice, shortDescription, thumbnailImage, product_url) VALUES (1,4,"https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6358/6358971_ra.jpg","HP - Refurbished EliteDesk Desktop - AMD A8-Series - 8GB Memory - 256GB Solid State Drive - Black",219,"RefurbishedWindows 10 ProTechnical details: AMD PRO A8-Series processor; 8GB DDR3 memory; 256GB solid-state driveNote: DVD/CD drive not included","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6358/6358971_r.gif","https://api.bestbuy.com/click/-/6358971/pdp");
 INSERT INTO product(customer_review_AVG, customerReviewCount, product_image, product_name, regularPrice, shortDescription, thumbnailImage, product_url) VALUES (1,1,"https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6359/6359728_sa.jpg","Shuttle - XPC slim Barebone Desktop - Intel Core i3 - Black",599.99,"7th Gen Intel&#174; Core&#8482; i3-7100U processorSpecial features: built-in wireless networking; HDMI output","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6359/6359728_s.gif","https://api.bestbuy.com/click/-/6359728/pdp");

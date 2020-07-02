@@ -4,7 +4,7 @@ const connection = mysql.createConnection({
   user: process.env.RDS_USERNAME||'root',
   password: process.env.RDS_PASSWORD||'Bruins2011!',
   database: process.env.RDS_DB_NAME||'bestbuy',
-  port: process.env.RDS_PORT||3306,
+  port: 3306,
 });
 connection.connect((err)=>{
   if (err){
@@ -13,6 +13,16 @@ connection.connect((err)=>{
   }
   console.log('Connected to DB')
 });
+const getImages= (callback)=>{
+  connection.query(`SELECT * FROM images WHERE product_id = 5`, (err, productInfo)=> {
+    if (err) {
+      console.log('could not find', err);
+      callback(err, null);
+    }else{
+    callback(null,productInfo);
+  }
+})
+};
 const getProductInfo= (callback)=>{
   connection.query('SELECT * FROM product', (err, productInfo)=> {
     if (err) {
@@ -24,4 +34,6 @@ const getProductInfo= (callback)=>{
 })
 };
 
-module.exports.getProductInfo = getProductInfo;
+
+
+module.exports = { getProductInfo, getImages };

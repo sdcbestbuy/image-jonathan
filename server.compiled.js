@@ -26,6 +26,16 @@ app.get('/display', function (req, res) {
     }
   });
 });
+app.get('/images', function (req, res) {
+  db.getImages(function (err, result) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(404);
+    } else {
+      res.send(result);
+    }
+  });
+});
 app.listen(port, function () {
   return console.log("Image Component listening at ".concat(port));
 });
