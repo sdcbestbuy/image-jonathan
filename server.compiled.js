@@ -1,41 +1,38 @@
-"use strict";
+const express = require('express');
 
-var express = require('express');
+const app = express();
+const port = process.env.PORT || 4200;
 
-var app = express();
-var port = process.env.PORT || 4200;
+const path = require('path');
 
-var path = require('path');
+const bodyParser = require('body-parser');
 
-var bodyParser = require('body-parser');
+const db = require('./database/queries.js');
 
-var db = require('./database/queries.js');
-
-app.use(express["static"](path.join(__dirname, "Client/dist")));
+app.use(express.static(path.join(__dirname, "Client/dist")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.get('/display', function (req, res) {
-  db.getProductInfo(function (err, result) {
+app.get('/display', (req, res) => {
+  db.getProductInfo((err, result) => {
     if (err) {
       console.log(err);
-      res.sendStatus(404);
+      res.sendStatus(400);
     } else {
       res.send(result);
     }
   });
 });
-app.get('/images', function (req, res) {
-  db.getImages(function (err, result) {
+app.get('/images/:id', (req, res) => {
+  console.log("param", req.params.id);
+  db.getImages(req.params.id, (err, result) => {
     if (err) {
       console.log(err);
-      res.sendStatus(404);
+      res.send(err, null);
     } else {
-      res.send(result);
+      res.status(200).send(result);
     }
   });
 });
-app.listen(port, function () {
-  return console.log("Image Component listening at ".concat(port));
-});
+app.listen(port, () => console.log(`Image Component listening at ${port}`));

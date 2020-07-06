@@ -14,20 +14,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
     db.getProductInfo((err, result)=>{
       if(err){
         console.log(err)
-        res.sendStatus(404)
+        res.sendStatus(400)
       }else{
       res.send(result)
     }
   })
   });
 
-  app.get('/images', (req, res)=>{
-    db.getImages((err, result)=>{
-      if(err){
-        console.log(err)
-        res.sendStatus(404)
-      }else{
-      res.send(result)
+  app.get('/images/:id', (req, res)=>{
+   console.log("param",req.params.id)
+  db.getImages(req.params.id, (err, result)=>{
+    if (err){
+      console.log(err)
+      res.send(err, null)
+    } else {
+      res.status(200).send(result)
     }
   })
   });

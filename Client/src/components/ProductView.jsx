@@ -18,7 +18,8 @@ const ProductView = ({ productInfo, customerLocation }) => {
             <div className="column">
               <div className="product">
                 <Category />
-                <MainImage imageFile={productInfo.product_image} />
+                <MainImage imageFile={productInfo.product_image}
+                id={productInfo.id} />
                 {/* <SecondaryImages /> */}
               </div>
             </div>

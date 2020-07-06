@@ -2,9 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import axios from 'axios';
+import fontawesome from '@fortawesome/fontawesome'
+import solid from '@fortawesome/fontawesome-free-solid'
+import regular from '@fortawesome/fontawesome-free-regular'
 import products from './products.js'
 import ProductView from './components/ProductView.jsx'
 import '../dist/style.css';
+
 
 class App extends React.Component {
   constructor() {
@@ -12,7 +16,7 @@ class App extends React.Component {
     this.state = {
       dataLoaded: false,
       customerLocation: false,
-      currentProduct: 5,
+      currentProduct: 101,
       productInfo: [],
       customerLocation: []
     }
@@ -58,7 +62,7 @@ class App extends React.Component {
       })
   };
 
-
+//had to use JQuery for location API, format was off when I tried to convert to axios
   getZip() {
     $.getJSON('http://ip-api.com/json?callback=?', (data) => {
       console.log("data", data)

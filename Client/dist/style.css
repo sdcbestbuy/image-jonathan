@@ -119,7 +119,10 @@
   width: 100%;
   height: 100%;
 }
-
+.gallery-button {
+  height: 56px;
+  width: 56px;
+}
 .thumbnail-image {
   padding: 0;
   max-height: 56px;
@@ -151,4 +154,136 @@
   box-sizing: border-box;
 }
 
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:800px;
+  height: 1000px;
+  /* min-width: 100%;
+  min-height: 100vh; */
+   background: white;
+  border: 1px solid #ccc;
+  transition: 1.1s ease-out;
+   box-shadow:
+    -2rem 2rem 2rem rgba(black, 0.2);
+  filter: blur(0);
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+}
 
+.image-tab-content-wrapper row {
+   margin-left: -15px;
+  margin-right: -15px;
+  box-sizing: border-box;
+  font-size: 13px;
+  line-height: normal;
+}
+.image-thumbnail-wrapper col-xs-3{
+  box-sizing: border-box;
+}
+.scroll-container {
+  display: flex;
+  flex-direction: column;
+
+}
+.vertical-touch-events{
+  /* touch-action: pan-x; */
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.thumbnail-gallery {
+  position: relative;
+  overflow: hidden;
+  /* z-index: 10; */
+  display: block;
+}
+.gallery-content {
+  position: relative;
+  /* transition: top .25s; */
+  width: 100%;
+  box-sizing: border-box;
+}
+.thumbnail-indicate {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  display:flex;
+  padding: 0;
+  justify-content: center;
+  list-style: none;
+  margin-top: 0;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+.thumbnail-content {
+  display: inline-block;
+  vertical-align: top;
+  list-style: none;
+  box-sizing: border-box;
+}
+.thumbnail-container-gallery {
+  height: 68px;
+  width: 68px;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+.image-gallery-button {
+  height: 68px;
+  width: 68px;
+   justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  overflow: visible;
+  margin: 0;
+  box-sizing: border-box;
+}
+.gallery-image{
+  padding: 0;
+  height: 68px;
+  width: 68px;
+  object-fit: cover;
+}
+.product-images {
+  text-transform: none;
+  border: none;
+    background-color: #fff;
+    color: black;
+    font-size: 17px;
+    padding: 0;
+    position: relative;
+    top: 1px;
+
+}
+.product-images .tab-title-selected{
+  border-bottom: 2px solid #1d252c;
+  padding-bottom: 5px;
+}
+.top-bar{
+  border-top-width: 0;
+  border-right-width: 0;
+
+}
+.gallery-viewer{
+  height:600px;
+  width: 675px;
+}
+.fa {
+  color: gold;
+}
+.fa fa-star{
+  color: gold;
+}

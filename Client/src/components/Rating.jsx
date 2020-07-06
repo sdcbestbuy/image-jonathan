@@ -1,8 +1,64 @@
 import React from 'react';
-let Rating = ({ rating, count }) => (
-  <div id="rating">
-    <div id="total-reviews">
-      <img id="stars" src="https://i.ibb.co/F3zgWkv/stars.jpg" />{rating} ({count} reviews)</div>
-  </div>
-)
+const Rating = ({ rating, count }) => {
+  let averageRating = (Math.round(rating))
+  if (averageRating === 1) {
+    return (
+      <span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star-o"></span>
+        <span className="fa fa-star-o"></span>
+        <span className="fa fa-star-o"></span>
+        <span className="fa fa-star-o"></span>
+        <span>{ rating } ({ count } reviews)</span>
+      </span>
+    );
+  } else if (averageRating === 2) {
+    return (
+      <span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star-o"></span>
+        <span className="fa fa-star-o"></span>
+        <span className="fa fa-star-o"></span>
+        <span>{ rating } ({ count } reviews)</span>
+      </span>
+    );
+  } else if (averageRating === 3) {
+    return (
+      <span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star-o"></span>
+        <span className="fa fa-star-o"></span>
+        <span>{ rating } ({ count } reviews)</span>
+      </span>
+    );
+  } else if (averageRating === 4) {
+    return (
+      <span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star-o"></span>
+        <span>{ rating } ({ count } reviews)</span>
+      </span>
+    );
+  } else if (averageRating === 5) {
+    return (
+      <span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star"></span>
+        <span>{ rating } ({ count } reviews)</span>
+      </span>
+    );
+  }
+<div>
+  { rating } ({ count } reviews)
+        </div >
+}
 export default Rating;
