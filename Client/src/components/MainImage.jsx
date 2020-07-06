@@ -12,7 +12,6 @@ class MainImage extends React.Component {
       loaded: false,
       id: this.props.id,
       show: false
-      currentProduct: this.props.id
     };
     this.grabThumbnails = this.grabThumbnails.bind(this);
   };
@@ -22,13 +21,13 @@ class MainImage extends React.Component {
   listenForChange() {
     window.addEventListener('click', (event) => {
       if (event.view.id !== undefined && event.view.id !== this.props.id) {
-        this.setState({ currentImage: this.props.imageFile })
+        this.setState({ currentImage: this.props.imageFile, id: event.view.id })
         this.grabThumbnails(event.view.id)
       }
     })
     window.addEventListener('submit', (event) => {
       if (window.id !== undefined && window.id !== this.props.id) {
-        this.setState({ currentImage: this.props.imageFile })
+        this.setState({ currentImage: this.props.imageFile, id:window.id })
         this.grabThumbnails(window.id)
       }
     })
@@ -46,9 +45,9 @@ class MainImage extends React.Component {
         thumbnailImages.push(this.props.imageFile)
         images.data.map((image) => {
           thumbnailImages.push(image.url)
-          this.setState({ thumbnails: thumbnailImages, loaded: true })
           console.log(this.state.thumbnails)
         })
+        this.setState({ thumbnails: thumbnailImages, loaded: true })
       })
       .catch((err) => {
         console.log(err)
@@ -77,7 +76,7 @@ class MainImage extends React.Component {
     return (
       <div>
 
-        {this.state.loaded
+        {this.state.loaded || this.state.id !== this.props.id
           ? <div>
             <div className='main-img'>
               <img id='main' src={this.state.currentImage} />
