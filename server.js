@@ -22,8 +22,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
   });
 
   app.get('/images', (req, res)=>{
-   console.log("param",params.id)
-  db.getImages(params.id, (err, result)=>{
+   console.log("req body",req.body)
+   console.log("body", req.body.params)
+   console.log("query", req.query)
+  db.getImages(req.query.id, (err, result)=>{
     if (err){
       console.log(err)
       res.send(err, null)
