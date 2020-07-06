@@ -12,6 +12,7 @@ class MainImage extends React.Component {
       loaded: false,
       id: this.props.id,
       show: false
+      currentProduct: this.props.id
     };
     this.grabThumbnails = this.grabThumbnails.bind(this);
   };
