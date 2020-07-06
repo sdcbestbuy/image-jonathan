@@ -14,10 +14,11 @@ class MainImage extends React.Component {
       show: false
     };
     this.grabThumbnails = this.grabThumbnails.bind(this);
+    this.listenForChange();
   };
   componentDidMount() {
     this.grabThumbnails(this.state.id);
-    listenForChange()
+    this.listenForChange()
   }
   // componentDidUpdate(prevProps, prevState){
   //   if (prevState.id !== this.state.id){
@@ -86,7 +87,18 @@ class MainImage extends React.Component {
               <img id='main' src={this.state.currentImage} />
             </div>
             <ul className='thumbnail-list'>
-            {this.state.loaded || this.state.id !== this.props.id ? this.renderThumbnails(): null}
+            {this.state.loaded || this.state.id !== this.props.id ?
+              this.state.thumbnails.slice(0, 4).map((thumbnail) => (
+                <li className='image-thumbnail'>
+                  <div className='thumbnail-container'>
+                    <button className='image-button'>
+                      <img onMouseEnter={() => { this.setState({ currentImage: thumbnail }) }} src={thumbnail} className='thumbnail-image' />
+                    </button>
+                  </div>
+                </li>
+              ))
+
+              : null}
           {this.state.loaded || this.state.id !== this.props.id ? this.renderModal() : null}
             <li className='image-thumbnail'>
               <div className='thumbnail-containter'>
