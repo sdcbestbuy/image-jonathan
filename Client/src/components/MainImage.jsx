@@ -82,17 +82,7 @@ class MainImage extends React.Component {
               <img id='main' src={this.state.currentImage} />
             </div>
             <ul className='thumbnail-list'>
-            {
-            this.state.thumbnails.slice(0, 4).map((thumbnail) => (
-              <li className='image-thumbnail'>
-                <div className='thumbnail-container'>
-                  <button className='image-button'>
-                    <img onMouseEnter={() => { this.setState({ currentImage: thumbnail }) }} src={thumbnail} className='thumbnail-image' />
-                  </button>
-                </div>
-              </li>
-            ))
-  }
+            {this.renderThumbnails()}
           {this.state.loaded ? this.renderModal() : null}
             <li className='image-thumbnail'>
               <div className='thumbnail-containter'>
