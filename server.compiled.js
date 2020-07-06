@@ -24,9 +24,9 @@ app.get('/display', (req, res) => {
     }
   });
 });
-app.get('/images/:id?', (req, res) => {
-  console.log("param", req.params.id);
-  db.getImages(req.params.id, (err, result) => {
+app.get('/images', (req, res) => {
+  console.log("param", params.id);
+  db.getImages(params.id, (err, result) => {
     if (err) {
       console.log(err);
       res.send(err, null);

@@ -39,8 +39,7 @@ class MainImage extends React.Component {
   };
   grabThumbnails(id) {
     const thumbnailImages = [];
-
-    Axios.get(`/images/${id}`)
+    Axios.get(`/images`, {params: {id: id} })
       .then((images) => {
         thumbnailImages.push(this.props.imageFile)
         images.data.map((image) => {
