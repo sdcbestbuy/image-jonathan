@@ -16,17 +16,19 @@ class MainImage extends React.Component {
     this.grabThumbnails = this.grabThumbnails.bind(this);
   };
   componentDidMount() {
-    this.grabThumbnails();
+    this.grabThumbnails(this.state.id);
   }
   listenForChange() {
     window.addEventListener('click', (event) => {
       if (event.view.id !== undefined && event.view.id !== this.props.id) {
         this.setState({ currentImage: this.props.imageFile })
+        this.grabThumbnails(event.view.id)
       }
     })
     window.addEventListener('submit', (event) => {
       if (window.id !== undefined && window.id !== this.props.id) {
         this.setState({ currentImage: this.props.imageFile })
+        this.grabThumbnails(window.id)
       }
     })
   }
@@ -35,10 +37,10 @@ class MainImage extends React.Component {
       show: !this.state.show
     });
   };
-  grabThumbnails() {
+  grabThumbnails(id) {
     const thumbnailImages = [];
 
-    Axios.get(`/images/${this.state.id}`)
+    Axios.get(`/images/${id}`)
       .then((images) => {
         thumbnailImages.push(this.props.imageFile)
         images.data.map((image) => {

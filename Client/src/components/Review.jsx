@@ -14,7 +14,8 @@ const Review = ({ rating, count }) => (
                           readOnly
                   />
               </i>
-          <span className="totalReviews">{'(' + count + ')'}</span>
+              {console.log(count)}
+          <span className="totalReviews">{rating + ' ' + '(' + count + ' reviews)'}</span>
           </div>
       </li>
   </ul>

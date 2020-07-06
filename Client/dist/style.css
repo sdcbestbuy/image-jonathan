@@ -344,20 +344,20 @@ review {
   text-align: -webkit-match-parent;
 }
 
-.itemRating {
+.imageitemRating {
 
   box-sizing:border-box;
   color:rgb(4, 87, 200);
   cursor:pointer;
   display:block;
   font-family:'Nunito', Arial, Helvetica, sans-serif;
-  font-size:11px;
+  font-size:13px;
   height: auto;
   line-height:normal;
   list-style-image:none;
   list-style-position:outside;
   list-style-type:none;
-  text-align:right;
+  text-align:left;
   text-size-adjust: 100%;
   visibility:visible;
   white-space:normal;
