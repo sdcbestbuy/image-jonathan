@@ -75,14 +75,13 @@ class MainImage extends React.Component {
     return (
       <div>
 
-        {this.state.loaded || this.state.id !== this.props.id
-          ? <div>
+         <div>
             <div className='main-img'>
               <img id='main' src={this.state.currentImage} />
             </div>
             <ul className='thumbnail-list'>
-            {this.state.loaded? this.renderThumbnails(): null}
-          {this.state.loaded ? this.renderModal() : null}
+            {this.state.loaded || this.state.id !== this.props.id ? this.renderThumbnails(): null}
+          {this.state.loaded || this.state.id !== this.props.id ? this.renderModal() : null}
             <li className='image-thumbnail'>
               <div className='thumbnail-containter'>
                 <button className='gallery-button'
@@ -97,9 +96,6 @@ class MainImage extends React.Component {
             </ul>
 
           </div>
-          : <div>loading...</div>
-
-        }
       </div >
     )
   }
