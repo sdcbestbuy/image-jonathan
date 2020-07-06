@@ -16,17 +16,19 @@ class MainImage extends React.Component {
     this.grabThumbnails = this.grabThumbnails.bind(this);
   };
   componentDidMount() {
-    this.grabThumbnails();
+    this.grabThumbnails(this.state.id);
   }
   listenForChange() {
     window.addEventListener('click', (event) => {
       if (event.view.id !== undefined && event.view.id !== this.props.id) {
-        this.setState({ currentImage: this.props.imageFile })
+        this.setState({ currentImage: this.props.imageFile, id: event.view.id })
+        this.grabThumbnails(event.view.id)
       }
     })
     window.addEventListener('submit', (event) => {
       if (window.id !== undefined && window.id !== this.props.id) {
-        this.setState({ currentImage: this.props.imageFile })
+        this.setState({ currentImage: this.props.imageFile, id:window.id })
+        this.grabThumbnails(window.id)
       }
     })
   }
@@ -35,16 +37,17 @@ class MainImage extends React.Component {
       show: !this.state.show
     });
   };
-  grabThumbnails() {
+  grabThumbnails(id) {
     const thumbnailImages = [];
 
-    Axios.get(`/images/${this.state.id}`)
+    Axios.get(`/images/${id}`)
       .then((images) => {
         thumbnailImages.push(this.props.imageFile)
         images.data.map((image) => {
           thumbnailImages.push(image.url)
-          this.setState({ thumbnails: thumbnailImages, loaded: true })
+          console.log(this.state.thumbnails)
         })
+        this.setState({ thumbnails: thumbnailImages, loaded: true })
       })
       .catch((err) => {
         console.log(err)
@@ -55,27 +58,31 @@ class MainImage extends React.Component {
     <Modal show={this.state.show} thumbnails={this.state.thumbnails} onClose={this.showModal}/>
   )
     }
+  renderThumbnails(){
+    return (
+    this.state.thumbnails.slice(0, 4).map((thumbnail) => (
+      <li className='image-thumbnail'>
+        <div className='thumbnail-container'>
+          <button className='image-button'>
+            <img onMouseEnter={() => { this.setState({ currentImage: thumbnail }) }} src={thumbnail} className='thumbnail-image' />
+          </button>
+        </div>
+      </li>
+    ))
+    )
+  }
 
   render() {
     return (
       <div>
 
-        {this.state.loaded
+        {this.state.loaded || this.state.id !== this.props.id
           ? <div>
             <div className='main-img'>
               <img id='main' src={this.state.currentImage} />
             </div>
             <ul className='thumbnail-list'>
-            {this.state.thumbnails.slice(0, 4).map((thumbnail) => (
-              <li className='image-thumbnail'>
-                <div className='thumbnail-container'>
-                  <button className='image-button'>
-                    <img onMouseEnter={() => { this.setState({ currentImage: thumbnail }) }} src={thumbnail} className='thumbnail-image' />
-                  </button>
-                </div>
-              </li>
-            ))
-            }
+            {this.state.loaded? this.renderThumbnails(): null}
           {this.state.loaded ? this.renderModal() : null}
             <li className='image-thumbnail'>
               <div className='thumbnail-containter'>

@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
   })
   });
 
-  app.get('/images/:id', (req, res)=>{
+  app.get('/images/:id?', (req, res)=>{
    console.log("param",req.params.id)
   db.getImages(req.params.id, (err, result)=>{
     if (err){

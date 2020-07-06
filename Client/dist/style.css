@@ -95,15 +95,12 @@
 .row {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   width: 100%;
 }
 .some-page-wrapper {
   margin: 15px;
 }
-#stars {
-  height:14px;
-}
+
 #title {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
@@ -112,8 +109,17 @@
   font-size: 18px;
 }
 #main {
-  height: 400px;
+  max-height: 400px;
+  max-width: 450px;
+  align-items: center;
+}
+.main-img {
+  height:400px;
   width: 450px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
 }
 .image-button {
   width: 100%;
@@ -165,12 +171,11 @@
    background: white;
   border: 1px solid #ccc;
   transition: 1.1s ease-out;
-   box-shadow:
-    -2rem 2rem 2rem rgba(black, 0.2);
   filter: blur(0);
   transform: scale(1);
   opacity: 1;
   visibility: visible;
+  z-index: 100;
 }
 
 .image-tab-content-wrapper row {
@@ -261,7 +266,6 @@
   text-transform: none;
   border: none;
     background-color: #fff;
-    color: black;
     font-size: 17px;
     padding: 0;
     position: relative;
@@ -281,9 +285,83 @@
   height:600px;
   width: 675px;
 }
-.fa {
-  color: gold;
+.main-modal-image {
+align-items: center;
+max-width: 650px;
+max-height: 650px;
 }
-.fa fa-star{
-  color: gold;
+
+review {
+  grid-area: review;
+  padding: 0px;
+}
+
+.ulReviews {
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 0;
+  font-size: 8px;
+
+}
+
+.liDiv {
+
+  font-size: .75em;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  right: 5px;
+}
+
+.liReviews {
+
+  border-right: none;
+  position: relative;
+  right: 10px;
+  list-style: none;
+
+
+}
+
+.stars {
+  position: relative;
+  height: 22px;
+  left: 3px;
+  right: 10px;
+  display: inline-flex;
+  transform: scale(0.8);
+}
+
+.totalReviews {
+  float: right;
+  font-size: 11px;
+  color: #0457c8;
+  cursor: pointer;
+  text-align: -webkit-match-parent;
+}
+
+.imageitemRating {
+
+  box-sizing:border-box;
+  color:rgb(4, 87, 200);
+  cursor:pointer;
+  display:block;
+  font-family:'Nunito', Arial, Helvetica, sans-serif;
+  font-size:13px;
+  height: auto;
+  line-height:normal;
+  list-style-image:none;
+  list-style-position:outside;
+  list-style-type:none;
+  text-align:left;
+  text-size-adjust: 100%;
+  visibility:visible;
+  white-space:normal;
+  width: 50%;
+  -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
 }

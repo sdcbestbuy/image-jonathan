@@ -4,8 +4,10 @@ const connection = mysql.createConnection({
   user: process.env.RDS_USERNAME || "root",
   password: process.env.RDS_PASSWORD || "Bruins2011!",
   database: process.env.RDS_DB_NAME || "bestbuy",
-  port: 3306,
+  port: process.env.RDS_PORT
 });
+
+
 connection.connect((err) => {
   if (err) {
     console.log("DB CONNECTION FAILED", err);
