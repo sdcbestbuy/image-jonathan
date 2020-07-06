@@ -1,77 +1,103 @@
 import React from 'react';
-import $ from 'jquery';
+// import $ from 'jquery';
+import Axios from 'axios';
+import Modal from './Modal.js';
 class MainImage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      currentImage: this.props.imageFile
-      }
+      currentImage: this.props.imageFile,
+      thumbnails: [],
+      loaded: false,
+      id: this.props.id,
+      show: false
+    };
+    this.grabThumbnails = this.grabThumbnails.bind(this);
+  };
+  componentDidMount() {
+    this.grabThumbnails();
   }
+  listenForChange() {
+    window.addEventListener('click', (event) => {
+      if (event.view.id !== undefined && event.view.id !== this.props.id) {
+        this.setState({ currentImage: this.props.imageFile })
+      }
+    })
+    window.addEventListener('submit', (event) => {
+      if (window.id !== undefined && window.id !== this.props.id) {
+        this.setState({ currentImage: this.props.imageFile })
+      }
+    })
+  }
+  showModal = (e) => {
+    this.setState({
+      show: !this.state.show
+    });
+  };
+  grabThumbnails() {
+    const thumbnailImages = [];
 
-render(){
-  let imageFile=this.props.imageFile;
-  return (
-    <div>
-  <div className='main-img'>
+    Axios.get(`/images/${this.state.id}`)
+      .then((images) => {
+        thumbnailImages.push(this.props.imageFile)
+        images.data.map((image) => {
+          thumbnailImages.push(image.url)
+          this.setState({ thumbnails: thumbnailImages, loaded: true })
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+  renderModal() {
+    return(
+    <Modal show={this.state.show} thumbnails={this.state.thumbnails} onClose={this.showModal}/>
+  )
+    }
 
-    <img id='main' src={this.state.currentImage} />
+  render() {
+    return (
+      <div>
 
-    </div>
-    <ul className='thumbnail-list'>
-      <li className='image-thumbnail'>
-        <div className='thumbnail-container'>
-        <button className='image-button'>
-          <img onMouseEnter={() =>{ this.setState({currentImage: imageFile})}} src={imageFile} className='thumbnail-image'/>
-        </button>
-        </div>
-      </li>
-      <li className='image-thumbnail'>
-        <div className='thumbnail-container'>
-        <button className='image-button'>
-          <img onMouseEnter={()=>{this.setState({currentImage: 'https://i.ibb.co/PmPSsZM/6393799ld.jpg'})}} src='https://i.ibb.co/PmPSsZM/6393799ld.jpg' className='thumbnail-image'/>
-        </button>
-        </div>
-      </li>
-      <li className='image-thumbnail'>
-        <div className='thumbnail-container'>
-        <button className='image-button'>
-          <img onMouseEnter={()=>{this.setState({currentImage: 'https://i.ibb.co/18xBpDR/2.jpg'})}} src='https://i.ibb.co/18xBpDR/2.jpg' className='thumbnail-image'/>
-        </button>
-        </div>
-      </li>
-    <li className='image-thumbnail'>
-        <div className='thumbnail-container'>
-        <button className='image-button'>
-          <img onMouseEnter={()=>{this.setState({currentImage: 'https://i.ibb.co/y8G8gg1/3.jpg'})}} src='https://i.ibb.co/y8G8gg1/3.jpg' className='thumbnail-image'/>
-        </button>
-        </div>
-      </li>
-      <li className='image-thumbnail'>
-        <div className='thumbnail-container'>
-        <button className='image-button'>
-          <img onMouseEnter={()=>{this.setState({currentImage: 'https://i.imgur.com/OOryx0Y.jpg'})}} src='https://i.imgur.com/OOryx0Y.jpg' className='thumbnail-image'/>
-        </button>
-        </div>
-      </li>
-    </ul>
+        {this.state.loaded
+          ? <div>
+            <div className='main-img'>
+              <img id='main' src={this.state.currentImage} />
+            </div>
+            <ul className='thumbnail-list'>
+            {this.state.thumbnails.slice(0, 4).map((thumbnail) => (
+              <li className='image-thumbnail'>
+                <div className='thumbnail-container'>
+                  <button className='image-button'>
+                    <img onMouseEnter={() => { this.setState({ currentImage: thumbnail }) }} src={thumbnail} className='thumbnail-image' />
+                  </button>
+                </div>
+              </li>
+            ))
+            }
+          {this.state.loaded ? this.renderModal() : null}
+            <li className='image-thumbnail'>
+              <div className='thumbnail-containter'>
+                <button className='gallery-button'
 
-    {/* 'https://i.ibb.co/y8G8gg1/3.jpg'
-    <div className='thumbnails'>
-  <img {onMouseOver}={this.imageSet({imageFile})} src={imageFile} className='thumbnail' />
-  <img onMouseOver={function imageSet(){
-    currentImage='https://i.ibb.co/PmPSsZM/6393799ld.jpg'
-  }} src='https://i.ibb.co/PmPSsZM/6393799ld.jpg' className='thumbnail' />
-  <img onMouseOver={this.imageSet('https://i.ibb.co/18xBpDR/2.jpg').bind(this)} src='https://i.ibb.co/18xBpDR/2.jpg' className='thumbnail' />
-  <img  onMouseOver={this.imageSet('https://i.ibb.co/y8G8gg1/3.jpg').bind(this)}  src='https://i.ibb.co/y8G8gg1/3.jpg' className='thumbnail' /> */}
+                onClick={e => {
+                  this.showModal(e);
+                }}>
+                  {this.state.thumbnails.length} images
+                </button>
+              </div>
+            </li>
+            </ul>
 
+          </div>
+          : <div>loading...</div>
 
-
-  {/* <img id='main3' src='https://i.ibb.co/18xBpDR/2.jpg' className='img-responsive main-image' />
-
-  <img id='main4' src='https://i.ibb.co/y8G8gg1/3.jpg' className='img-responsive main-image' /> */}
-</div>
-)
+        }
+      </div >
+    )
+  }
 }
-}
+
+
 export default MainImage;
