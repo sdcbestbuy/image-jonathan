@@ -82,7 +82,7 @@ class MainImage extends React.Component {
               <img id='main' src={this.state.currentImage} />
             </div>
             <ul className='thumbnail-list'>
-            {this.renderThumbnails()}
+            {this.state.loaded? this.renderThumbnails(): null}
           {this.state.loaded ? this.renderModal() : null}
             <li className='image-thumbnail'>
               <div className='thumbnail-containter'>
