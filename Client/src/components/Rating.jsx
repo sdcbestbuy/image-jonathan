@@ -57,8 +57,5 @@ const Rating = ({ rating, count }) => {
       </span>
     );
   }
-<div>
-  { rating } ({ count } reviews)
-        </div >
 }
 export default Rating;
