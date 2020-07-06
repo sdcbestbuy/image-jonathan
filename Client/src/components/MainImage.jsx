@@ -46,6 +46,7 @@ class MainImage extends React.Component {
         images.data.map((image) => {
           thumbnailImages.push(image.url)
           this.setState({ thumbnails: thumbnailImages, loaded: true })
+          console.log(this.state.thumbnails)
         })
       })
       .catch((err) => {
@@ -58,6 +59,7 @@ class MainImage extends React.Component {
   )
     }
   renderThumbnails(){
+    return (
     this.state.thumbnails.slice(0, 4).map((thumbnail) => (
       <li className='image-thumbnail'>
         <div className='thumbnail-container'>
@@ -67,6 +69,7 @@ class MainImage extends React.Component {
         </div>
       </li>
     ))
+    )
   }
 
   render() {
@@ -79,7 +82,17 @@ class MainImage extends React.Component {
               <img id='main' src={this.state.currentImage} />
             </div>
             <ul className='thumbnail-list'>
-            {renderThumbnails()}
+            {
+            this.state.thumbnails.slice(0, 4).map((thumbnail) => (
+              <li className='image-thumbnail'>
+                <div className='thumbnail-container'>
+                  <button className='image-button'>
+                    <img onMouseEnter={() => { this.setState({ currentImage: thumbnail }) }} src={thumbnail} className='thumbnail-image' />
+                  </button>
+                </div>
+              </li>
+            ))
+  }
           {this.state.loaded ? this.renderModal() : null}
             <li className='image-thumbnail'>
               <div className='thumbnail-containter'>
