@@ -17,7 +17,13 @@ class MainImage extends React.Component {
   };
   componentDidMount() {
     this.grabThumbnails(this.state.id);
+    listenForChange()
   }
+  // componentDidUpdate(prevProps, prevState){
+  //   if (prevState.id !== this.state.id){
+  //     this.grabThumbnails(this.state.id);
+  //   }
+  // }
   listenForChange() {
     window.addEventListener('click', (event) => {
       if (event.view.id !== undefined && event.view.id !== this.props.id) {
