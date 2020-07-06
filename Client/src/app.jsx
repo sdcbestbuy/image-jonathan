@@ -16,7 +16,7 @@ class App extends React.Component {
     this.state = {
       dataLoaded: false,
       customerLocation: false,
-      currentProduct: 101,
+      currentProduct: 99,
       productInfo: [],
       customerLocation: []
     }
@@ -56,6 +56,7 @@ class App extends React.Component {
           productInfo: data,
           dataLoaded: true
         })
+        console.log('loaded', data)
       })
       .catch((error) => {
         console.log(error);
