@@ -3,7 +3,7 @@ import MainImage from "./MainImage.jsx";
 import App from "../app.jsx";
 import Category from "./Category.jsx";
 import Title from "./Title.jsx";
-import Rating from "./Rating.jsx";
+import Review from "./Review.jsx";
 import Price from "./Price.jsx";
 import AddToCart from "./AddToCart.jsx";
 import Delivery from "./Delivery.jsx";
@@ -12,7 +12,6 @@ const ProductView = ({ productInfo, customerLocation }) => {
   return (
     <div>
       <div id="container">
-        {/* name={productInfo.product_name} */}
         <div className="some-page-wrapper">
           <div className="row">
             <div className="column">
@@ -20,13 +19,12 @@ const ProductView = ({ productInfo, customerLocation }) => {
                 <Category />
                 <MainImage imageFile={productInfo.product_image}
                 id={productInfo.id} />
-                {/* <SecondaryImages /> */}
               </div>
             </div>
             <div className="column">
               <div className="purchase">
                 <Title title={productInfo.product_name} />
-                <Rating
+                <Review
                   rating={productInfo.customer_review_AVG}
                   count={productInfo.customerReviewCount}
                 />

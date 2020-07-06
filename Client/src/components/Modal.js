@@ -43,7 +43,7 @@ class Modal extends React.Component {
               </div>
               </div>
                       )
-                    })
+                     })
                     }
             </div>
           </div>
@@ -53,7 +53,7 @@ class Modal extends React.Component {
           </div>
           {/* Main view */}
           <div className='gallery-viewer'>
-                    <img src={this.state.currentImage}/>
+                    <img className='main-modal-image' src={this.state.currentImage}/>
                     <div className='close-button'>
       <button className="toggle-button" onClick={this.onClose}>
               Close

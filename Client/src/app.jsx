@@ -5,7 +5,6 @@ import axios from 'axios';
 import fontawesome from '@fortawesome/fontawesome'
 import solid from '@fortawesome/fontawesome-free-solid'
 import regular from '@fortawesome/fontawesome-free-regular'
-import products from './products.js'
 import ProductView from './components/ProductView.jsx'
 import '../dist/style.css';
 
@@ -16,7 +15,7 @@ class App extends React.Component {
     this.state = {
       dataLoaded: false,
       customerLocation: false,
-      currentProduct: 99,
+      currentProduct: 101,
       productInfo: [],
       customerLocation: []
     }
@@ -29,6 +28,7 @@ class App extends React.Component {
   componentDidMount() {
     this.getAllData(this.state.productInfo);
     this.getZip();
+    //Event listener for carousel change of current item
     window.addEventListener('click', (event) => {
       console.log("id", event.view.id)
       if (event.view.id !== undefined) {
@@ -37,6 +37,7 @@ class App extends React.Component {
         }
       }
     })
+    //Event listener for searchbar change of current item
     window.addEventListener('submit', (event) => {
       console.log("id", window.id)
       if (window.id !== undefined) {
@@ -56,7 +57,6 @@ class App extends React.Component {
           productInfo: data,
           dataLoaded: true
         })
-        console.log('loaded', data)
       })
       .catch((error) => {
         console.log(error);
@@ -73,7 +73,7 @@ class App extends React.Component {
         console.log('error')
       })
   }
-
+//function to change the current product
   setCurrentProduct(id) {
     this.setState({ currentProduct: id })
   }
