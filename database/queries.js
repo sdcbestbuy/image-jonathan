@@ -6,6 +6,8 @@ const connection = mysql.createConnection({
   database: process.env.RDS_DB_NAME || "bestbuy",
   port: process.env.RDS_PORT || 3306
 });
+
+
 connection.connect((err) => {
   if (err) {
     console.log("DB CONNECTION FAILED", err);
