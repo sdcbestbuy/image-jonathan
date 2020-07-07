@@ -11,27 +11,35 @@ class MainImage extends React.Component {
       thumbnails: [],
       loaded: false,
       id: this.props.id,
-      show: false
+      show: false,
+      imageLoad: false
     };
     this.grabThumbnails = this.grabThumbnails.bind(this);
   };
   componentDidMount() {
     this.grabThumbnails(this.state.id);
-  }
-  listenForChange() {
     window.addEventListener('click', (event) => {
-      if (event.view.id !== undefined && event.view.id !== this.props.id) {
+      if (event.view.id !== undefined) {
         this.setState({ currentImage: this.props.imageFile, id: event.view.id })
         this.grabThumbnails(event.view.id)
+
       }
     })
     window.addEventListener('submit', (event) => {
-      if (window.id !== undefined && window.id !== this.props.id) {
+      if (window.id !== undefined) {
         this.setState({ currentImage: this.props.imageFile, id:window.id })
         this.grabThumbnails(window.id)
       }
     })
   }
+  // componentDidUpdate(prevProps, prevState){
+  //   if (prevState.id !== this.state.id){
+  //     this.grabThumbnails(this.state.id);
+  //   }
+  // }
+
+
+
   showModal = (e) => {
     this.setState({
       show: !this.state.show
@@ -39,16 +47,15 @@ class MainImage extends React.Component {
   };
   grabThumbnails(id) {
     const thumbnailImages = [];
-
-    Axios.get(`/images/${id}`)
+    Axios.get(`/images`, {params: {id: id} })
       .then((images) => {
         thumbnailImages.push(this.props.imageFile)
         images.data.map((image) => {
           thumbnailImages.push(image.url)
-          console.log(this.state.thumbnails)
+          console.log(thumbnailImages)
+          })
+          this.setState({ thumbnails: thumbnailImages, loaded: true })
         })
-        this.setState({ thumbnails: thumbnailImages, loaded: true })
-      })
       .catch((err) => {
         console.log(err)
       })
@@ -76,14 +83,24 @@ class MainImage extends React.Component {
     return (
       <div>
 
-        {this.state.loaded || this.state.id !== this.props.id
-          ? <div>
+         <div>
             <div className='main-img'>
               <img id='main' src={this.state.currentImage} />
             </div>
             <ul className='thumbnail-list'>
-            {this.state.loaded? this.renderThumbnails(): null}
-          {this.state.loaded ? this.renderModal() : null}
+            {this.state.loaded?
+  this.state.thumbnails.slice(0,4).map((thumbnail)=>(
+                <li className='image-thumbnail'>
+                  <div className='thumbnail-container'>
+                    <button className='image-button'>
+                      <img onMouseEnter={() => { this.setState({ currentImage: thumbnail }) }} src={thumbnail} className='thumbnail-image' />
+                    </button>
+                  </div>
+                </li>
+            ))
+
+                 : null}
+          {this.state.loaded !== this.props.id ? this.renderModal() : null}
             <li className='image-thumbnail'>
               <div className='thumbnail-containter'>
                 <button className='gallery-button'
@@ -98,9 +115,6 @@ class MainImage extends React.Component {
             </ul>
 
           </div>
-          : <div>loading...</div>
-
-        }
       </div >
     )
   }
