@@ -26,7 +26,7 @@ class MainImage extends React.Component {
       }
     })
     window.addEventListener('submit', (event) => {
-      if (window.id !== undefined && window.id !== this.props.id) {
+      if (window.id !== undefined) {
         this.setState({ currentImage: this.props.imageFile, id:window.id })
         this.grabThumbnails(window.id)
       }
