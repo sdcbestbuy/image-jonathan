@@ -1,5 +1,7 @@
 node_modules
 .DS_Store
+.babelrc
+webpack.config.js
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

@@ -48,7 +48,6 @@ class App extends React.Component {
     })
   }
 
-
   //event handlers
   getAllData() {
     axios.get('/display')
@@ -64,6 +63,20 @@ class App extends React.Component {
   };
 
   //put data
+  putData() {
+    axios.put('/display', {
+      data: 'test'
+    })
+    .then((res) => {
+      this.setState({
+        productInfo: res,
+        dataLoaded: true
+      })
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
 
   //post
   postData() {
@@ -80,6 +93,19 @@ class App extends React.Component {
   }
 
   //delete
+  deleteData(event) {
+    const id = event.target.value;
+    axios.delete (`/display/${id}`)
+      .then((res) => {
+        this.setState({
+          productInfo: res,
+          dataLoaded: true
+        })
+      })
+      .catch (err => {
+        console.log(err);
+      })
+  }
 
 //had to use JQuery for location API, format was off when I tried to convert to axios
   getZip() {
