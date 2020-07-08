@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
+import $, { data } from 'jquery';
 import axios from 'axios';
 import fontawesome from '@fortawesome/fontawesome'
 import solid from '@fortawesome/fontawesome-free-solid'
@@ -62,6 +62,24 @@ class App extends React.Component {
         console.log(error);
       })
   };
+
+  //put data
+
+  //post
+  postData() {
+    axios.post('/display')
+      .then((res) => {
+        this.setState({
+          productInfo: res,
+          dataLoaded: true
+        })
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  //delete
 
 //had to use JQuery for location API, format was off when I tried to convert to axios
   getZip() {
