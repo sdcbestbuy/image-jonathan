@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cmurray1105/Product-Image.git"
+    "url": "git+https://github.com/sdcbestbuy/image-jonathan.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cmurray1105/Product-Image/issues"
+    "url": "https://github.com/sdcbestbuy/image-jonathan/issues"
   },
-  "homepage": "https://github.com/cmurray1105/Product-Image#readme",
+  "homepage": "https://github.com/sdcbestbuy/image-jonathan#readme",
   "dependencies": {
     "@babel/cli": "^7.10.3",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
