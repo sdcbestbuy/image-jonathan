@@ -35,5 +35,38 @@ app.use(bodyParser.urlencoded({ extended: true }));
   })
   });
 
+  app.post('/images', (req, res)=> {
+    var data = [req.body.data];
+    db.postImage(data, (err, result) => {
+      if(err) {
+        res.send(err);
+      } else {
+        res.status(200).send(result);
+      }
+    })
+  })
+
+  app.delete('/display/:id', (req, res)=> {
+    var id = [req.params.id];
+    db.deleteData(id, (err, result) => {
+      if(err) {
+        res.send(err);
+      } else {
+        res.status(200).send(result);
+      }
+    })
+  })
+
+  app.put('/display', (req, res)=> {
+    var id = [req.body.id];
+    db.putData(id, (err, result) => {
+      if(err) {
+        res.send(err);
+      } else {
+        res.status(200).send(result);
+      }
+    })
+  })
+
 
 app.listen(port, () => console.log(`Image Component listening at ${port}`))

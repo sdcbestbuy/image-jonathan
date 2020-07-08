@@ -17,12 +17,16 @@ class App extends React.Component {
       customerLocation: false,
       currentProduct: 101,
       productInfo: [],
-      customerLocation: []
+      customerLocation: [],
+      example: 'test'
     }
     //bind event handler
     this.getAllData = this.getAllData.bind(this);
     this.getZip = this.getZip.bind(this);
     this.setCurrentProduct = this.setCurrentProduct.bind(this);
+    this.putData = this.putData.bind(this);
+    this.postImage = this.postImage.bind(this);
+    this.deleteData = this.deleteData.bind(this);
   };
 
   componentDidMount() {
@@ -63,9 +67,10 @@ class App extends React.Component {
   };
 
   //put data
-  putData() {
+  putData(event) {
+    var productId = event.target.id
     axios.put('/display', {
-      data: 'test'
+      id: productId
     })
     .then((res) => {
       this.setState({
@@ -79,8 +84,10 @@ class App extends React.Component {
   }
 
   //post
-  postData() {
-    axios.post('/display')
+  postImage() {
+    axios.post('/images', {
+      data: this.state.example
+    })
       .then((res) => {
         this.setState({
           productInfo: res,

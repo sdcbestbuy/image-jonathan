@@ -26,6 +26,37 @@ const getImages = (id, cb) => {
     }
   })
 }
+const postImage = (data, cb) => {
+  connection.query('INSERT INTO images (product_id, url)\
+   VALUES (?,?)', data, (err, results) => {
+    if(err) {
+      cb(err, null);
+    } else {
+      cb(null, results);
+    }
+  })
+}
+
+const deleteData = (id, cb) => {
+  connection.query('DELETE FROM images WHERE id=(?)', id, (err, results) => {
+    if(err) {
+      cb(err, null);
+    } else {
+      cb(null, results);
+    }
+  })
+}
+
+const putData = (id, cb) => {
+  connection.query("UPDATE product SET product_name='yassss queeennn' where id=(?)"
+  , id, (err, results) => {
+    if(err) {
+      cb(err, null);
+    } else {
+      cb(null, results);
+    }
+  })
+}
 
 const getProductInfo = (callback) => {
   connection.query("SELECT * FROM product", (err, productInfo) => {
@@ -38,4 +69,4 @@ const getProductInfo = (callback) => {
   });
 };
 
-module.exports = { getProductInfo, getImages };
+module.exports = { getProductInfo, getImages, putData, deleteData, postImage };
