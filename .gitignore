@@ -2,6 +2,7 @@ node_modules
 .DS_Store
 .babelrc
 webpack.config.js
+.env
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
