@@ -3,10 +3,10 @@ require('dotenv').config();
 
 
 const connection = new Client({
-  user: `${process.env.DB_USER}`,
-  host: `${process.env.DB_HOST}`,
-  database: `${process.env.DB_DBNAME}`,
-  password: `${process.env.DB_PASS}`
+  user: `postgres`,
+  host: `34.229.224.145`,
+  database: `test`,
+  password: `password`
 })
 
 connection.connect((err) => {
