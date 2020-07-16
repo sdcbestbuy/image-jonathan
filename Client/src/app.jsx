@@ -8,7 +8,6 @@ import regular from '@fortawesome/fontawesome-free-regular'
 import ProductView from './components/ProductView.jsx'
 import '../dist/style.css';
 
-
 class App extends React.Component {
   constructor() {
     super();

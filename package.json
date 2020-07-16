@@ -6,13 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "react-dev": "webpack --watch --mode development --inline --progress",
-    "start": "node server.compiled.js",
+    "start": "node server.js",
     "server-dev": "webpack-dev-server --config webpack.config.js --open --hot -w",
     "build": "babel server.js -o server.compiled.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sdcbestbuy/image-jonathan.git"
+    "url": "git+https://github.com/sdcbestbuy/image-jonathan.git",
+    "runtimeArgs": [
+      "node --max-old-space-size=15360 #increase to 15gb"
+    ]
   },
   "author": "",
   "license": "ISC",
@@ -30,25 +33,32 @@
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
+    "@newrelic/webpack-plugin": "^0.4.2",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
     "css-loader": "^3.6.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "http2": "^3.3.7",
     "jquery": "^3.5.1",
+    "knex": "^0.21.1",
     "mobx": "^5.15.4",
     "mobx-react": "^6.2.2",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.22",
     "mysql": "^2.18.1",
+    "newrelic": "^6.11.0",
     "nodemon": "^2.0.4",
-    "npm": "^6.14.5",
+    "npm": "^6.14.6",
     "path": "^0.12.7",
+    "pg": "^8.3.0",
     "react": "^16.13.1",
     "react-dev": "0.0.1",
     "react-dom": "^16.13.1",
     "react-modal": "^3.11.2",
     "run": "^1.4.0",
+    "spdy": "^4.0.2",
     "webpack": "^4.43.0",
     "webpack-dev-server": "^3.11.0"
   },

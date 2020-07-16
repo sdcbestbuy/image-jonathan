@@ -1,3 +1,5 @@
+global.newrelic = require('newrelic');
+
 import App from './app.jsx';
 import ReactDOM from 'react-dom';
 import React from 'react'

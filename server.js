@@ -1,7 +1,15 @@
+const newrelic = require('newrelic');
 const express = require('express');
+
+newrelic.instrumentLoadedModule(
+  'express', // the module's name, as a string
+  express // the module instance
+  );
+
 const app = express();
 const port = process.env.PORT||4200
 const path = require('path');
+const fs = require('fs');
 const bodyParser=require('body-parser');
 const db =require('./database/queries.js');
 
@@ -9,11 +17,12 @@ app.use(express.static(path.join(__dirname, "Client/dist")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
   app.get('/display', (req, res) => {
 
     db.getProductInfo((err, result)=>{
       if(err){
-        console.log(err)
+        //console.log(err)
         res.sendStatus(400)
       }else{
       res.send(result)
@@ -58,8 +67,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
   })
 
   app.put('/display', (req, res)=> {
-    var id = [req.body.id];
-    db.putData(id, (err, result) => {
+    // var id = [req.body.id];
+    db.putData((err, result) => {
       if(err) {
         res.send(err);
       } else {
@@ -68,5 +77,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
     })
   })
 
-
-app.listen(port, () => console.log(`Image Component listening at ${port}`))
+app.listen(port, (error) => {
+    if (error) {
+      console.error(error)
+      return process.exit(1)
+    } else {
+      console.log('Listening on port: ' + port + '.')
+    }
+  })
