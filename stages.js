@@ -10,7 +10,7 @@ export let options = {
       { duration: '1m', target: 10 },
       { duration: '1m', target: 100 }, // spike to 1400 users
       { duration: '1m', target: 200 }, // stay at 1400 for 3 minutes
-      { duration: '2m', target: 300 },
+      { duration: '2m', target: 230 },
       { duration: '2m', target: 200 },
       { duration: '10s', target: 5 }, // scale down. Recovery stage.
       { duration: '1m', target: 50 }, 
