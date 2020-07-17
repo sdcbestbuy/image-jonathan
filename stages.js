@@ -12,7 +12,6 @@ export let options = {
       { duration: '1m', target: 400 }, // stay at 1400 for 3 minutes
       { duration: '2m', target: 500 },
       { duration: '2m', target: 600 },
-      { duration: '1s', target: 1000 },
       { duration: '10s', target: 5 }, // scale down. Recovery stage.
       { duration: '1m', target: 300 }, 
       { duration: '10s', target: 0 },
@@ -20,7 +19,7 @@ export let options = {
 };
 
 export default function() {
-  let res = http.get('http://192.168.1.81:4200/display/');
+  let res = http.get('http://localhost/display/');
   check(res, { 'status was 200': r => r.status == 200 });
 
   if(res.status === 500) {
